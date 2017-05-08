@@ -1,0 +1,56 @@
+<apex:page controller="SightingsValidatorController" sidebar="false">
+    <apex:sectionHeader title="Sightings Validation" />
+    <apex:includeScript value="{!$Resource.CheckboxJS}"/>  
+    <apex:form >  
+        <apex:outputPanel id="thePanel">
+            <apex:pageMessages />
+            
+            <apex:pageBlock title="Details">
+                <apex:map width="800px" height="600px" mapType="satellite" zoomLevel="6" center="{latitude:{!latitude}, longitude:{!longitude}}">
+                    <apex:repeat value="{!SightingWrappers}" var="s">
+                        <apex:mapMarker title="{!s.sighting.Name }" position="{latitude:{!s.sighting.Location__Latitude__s},longitude:{!s.sighting.Location__Longitude__s}}" />
+                    </apex:repeat>
+                </apex:map>
+                <br/>
+                <apex:outputText >Location (Latitude)</apex:outputText><apex:inputText value="{!latitude}" required="true"/> <br/>
+                <apex:outputText >Location (Longitude)</apex:outputText><apex:inputText value="{!longitude}" required="true"/> <br/>
+                <apex:outputText >Distance (km)</apex:outputText><apex:inputText value="{!distance}"/> <br/>
+                <apex:commandButton value="Search" action="{!search}"/>
+            </apex:pageBlock>      
+            
+            <apex:pageBlock title="Overview">
+                <apex:commandButton value="Approve" action="{!approve}" /> 
+                <apex:commandButton value="Reject" action="{!reject}"/> 
+                <apex:commandButton value="Reset" action="{!reset}"/>
+                
+                <apex:pageblockTable value="{!SightingWrappers}" var="s">
+                    <apex:column >
+                        <apex:facet name="header"> 
+                            <apex:inputCheckbox onclick="checkAll(this)"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!s.selected}"/>
+                    </apex:column>
+                    <apex:column headerValue="Date">  
+                        <apex:outputlink value="/{!s.sighting.id}"  target="_blank">{!s.sighting.Date__c}</apex:outputlink>  
+                    </apex:column>  
+                    <apex:column headerValue="Species Name" value="{!s.sighting.Species__r.Name}" 
+                        style="{!IF(OR(s.sighting.Species__r.Rarity__c == 'Rare',s.sighting.Species__r.Rarity__c == 'Endangered'), 'color:red', 'color:black')}" />  
+                    <apex:column headerValue="Seen By">  
+                    <apex:outputlink value="{!URLFOR('/' + s.sighting.Owner.Id)}/e" target="_blank">{!s.sighting.Owner.Name}</apex:outputlink>  
+                    </apex:column>  
+                    <apex:column headerValue="Position" value="{!s.sighting.Location__Latitude__s}, {!s.sighting.Location__Longitude__s}" />  
+                    <apex:column headerValue="Number of Animals" value="{!s.sighting.Number_of_Animals__c}"/>
+                    <apex:column headerValue="Validation Status" value="{!s.sighting.Validation_Status__c}"/>
+                </apex:pageBlockTable>
+                
+                <apex:commandButton value="First" action="{!first}" rerender="thePanel" disabled="{!disablePrevious}" /> 
+                <apex:commandButton value="Previous" action="{!previous}" rerender="thePanel" disabled="{!disablePrevious}" />
+                <apex:outputText > Page
+                    {!pageNumber} of {!totalPages}
+                </apex:outputText> 
+                <apex:commandButton value="Next" action="{!next}" rerender="thePanel" disabled="{!disableNext}" /> 
+                <apex:commandButton value="Last" action="{!last}" rerender="thePanel"  disabled="{!disableNext}" />
+            </apex:pageBlock>   
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Common__c</fullName>
+        <defaultValue>401</defaultValue>
+        <externalId>false</externalId>
+        <label>Common</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Endangered__c</fullName>
+        <defaultValue>100</defaultValue>
+        <externalId>false</externalId>
+        <label>Endangered</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Extinction__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Extinction</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rare__c</fullName>
+        <defaultValue>400</defaultValue>
+        <externalId>false</externalId>
+        <label>Rare</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Species Rarity Setting</label>
+    <pluralLabel>Species Rarity Settings</pluralLabel>
+</CustomObject>

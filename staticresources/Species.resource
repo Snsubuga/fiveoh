@@ -1,0 +1,11 @@
+Record ID,External Id,Rarity,Species Group,Species Name
+"a0741000003hZpTAAU","Brown Bear","","Mammals","Brown Bear"
+"a0741000003hZpUAAU","Bald Eagle","","Birds","Bald Eagle"
+"a0741000003hZpVAAU","Black Bear","","Mammals","Black Bear"
+"a0741000003hZpWAAU","Polar Bear","","Mammals","Polar Bear"
+"a0741000003hZpXAAU","Orca","","Mammals","Orca"
+"a0741000003hZpYAAU","Gyrfalcon","","Birds","Gyrfalcon"
+"a0741000003hZpZAAU","Snowy Owl","Rare","Birds","Snowy Owl"
+"a0741000003hZpaAAE","Salmon","","Fish","Salmon"
+"a0741000003hZpbAAE","Trout","","Fish","Trout"
+"a0741000003hZpcAAE","Halibut","","Fish","Halibut"
